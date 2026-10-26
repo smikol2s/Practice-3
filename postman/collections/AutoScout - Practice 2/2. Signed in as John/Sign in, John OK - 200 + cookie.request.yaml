@@ -1,0 +1,20 @@
+$kind: http-request
+name: Sign in, John OK -> 200 + cookie
+url: "{{baseUrl}}/api/auth/signin"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: text
+  content: |-
+    {
+      "email": "johndoe@example.com",
+      "password": "1234"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test('Status is 200', () => pm.response.to.have.status(200));
+      pm.collectionVariables.set('johnId', pm.response.json()._id); pm.test('Session cookie set', () => pm.expect(pm.cookies.has('session')).to.be.true);
+    language: text/javascript
+order: 3000

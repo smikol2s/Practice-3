@@ -1,0 +1,9 @@
+$kind: collection
+description: Run `npm run seed`, then run the whole collection in order.
+variables:
+  baseUrl: http://localhost:3000
+  johnId: ""
+  janeId: ""
+  productId: ""
+  productId2: ""
+  orderId: ""

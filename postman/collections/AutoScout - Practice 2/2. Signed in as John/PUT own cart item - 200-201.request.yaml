@@ -1,0 +1,17 @@
+$kind: http-request
+name: PUT own cart item -> 200/201
+url: "{{baseUrl}}/api/users/{{johnId}}/cart/{{productId2}}"
+method: PUT
+headers:
+  Content-Type: application/json
+body:
+  type: text
+  content: |-
+    {
+      "qty": 2
+    }
+scripts:
+  - type: afterResponse
+    code: pm.test('Status is 200', () => pm.response.to.have.status(200));
+    language: text/javascript
+order: 6000

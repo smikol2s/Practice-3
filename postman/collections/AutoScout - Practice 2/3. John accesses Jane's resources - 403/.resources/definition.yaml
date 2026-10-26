@@ -1,0 +1,3 @@
+$kind: collection
+name: 3. John accesses Jane's resources -> 403
+order: 4000

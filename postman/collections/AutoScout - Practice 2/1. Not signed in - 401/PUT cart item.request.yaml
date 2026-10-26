@@ -1,0 +1,16 @@
+$kind: http-request
+url: "{{baseUrl}}/api/users/{{janeId}}/cart/{{productId}}"
+method: PUT
+headers:
+  Content-Type: application/json
+body:
+  type: text
+  content: |-
+    {
+      "qty": 1
+    }
+scripts:
+  - type: afterResponse
+    code: pm.test('Status is 401', () => pm.response.to.have.status(401));
+    language: text/javascript
+order: 3000

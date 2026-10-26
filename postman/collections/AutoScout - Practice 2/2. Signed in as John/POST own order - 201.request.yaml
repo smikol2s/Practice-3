@@ -1,0 +1,21 @@
+$kind: http-request
+name: POST own order -> 201
+url: "{{baseUrl}}/api/users/{{johnId}}/orders"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: text
+  content: |-
+    {
+      "address": "123 Main St",
+      "cardHolder": "John Doe",
+      "cardNumber": "4111111111111111"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test('Status is 201', () => pm.response.to.have.status(201));
+      pm.collectionVariables.set('orderId', pm.response.headers.get('Location').split('/').pop());
+    language: text/javascript
+order: 9000

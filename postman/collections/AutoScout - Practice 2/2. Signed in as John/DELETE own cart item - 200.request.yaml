@@ -1,0 +1,9 @@
+$kind: http-request
+name: DELETE own cart item -> 200
+url: "{{baseUrl}}/api/users/{{johnId}}/cart/{{productId2}}"
+method: DELETE
+scripts:
+  - type: afterResponse
+    code: pm.test('Status is 200', () => pm.response.to.have.status(200));
+    language: text/javascript
+order: 7000

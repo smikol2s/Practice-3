@@ -1,0 +1,25 @@
+REQUIREMENTS
+============
+
+1. Node.js 18.18 or newer (with npm).
+2. A MongoDB server running locally on the default port (mongodb://127.0.0.1:27017).
+   The connection string is defined in .env.local (MONGODB_URI).
+   If your MongoDB runs elsewhere, edit MONGODB_URI in .env.local.
+
+HOW TO RUN
+==========
+
+   npm install        (installs the dependencies; needed once because node_modules is not included)
+   npm run seed       (drops the database and fills it with sample data; prints the new IDs)
+   npm run dev        (starts the server at http://localhost:3000)
+
+Note: every time the seeder is executed, all documents get new IDs.
+
+AUTHENTICATION (Practice 2)
+===========================
+
+   SESSION_SECRET in .env.local is the key used to sign the session JWT.
+   Sample users created by the seeder:
+     johndoe@example.com   / 1234
+     janesmith@example.com / 5678
+   Postman tests: postman/AutoScout-Practice-2.postman_collection.json

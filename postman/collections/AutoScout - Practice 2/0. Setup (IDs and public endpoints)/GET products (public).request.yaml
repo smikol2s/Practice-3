@@ -1,0 +1,10 @@
+$kind: http-request
+url: "{{baseUrl}}/api/products"
+method: GET
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test('Status is 200', () => pm.response.to.have.status(200));
+      const p = pm.response.json().products; pm.collectionVariables.set('productId', p[0]._id); pm.collectionVariables.set('productId2', p[1]._id);
+    language: text/javascript
+order: 1000
